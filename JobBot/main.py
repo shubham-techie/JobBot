@@ -12,9 +12,11 @@ from bs4 import BeautifulSoup
 # pd.set_option('display.max_colwidth',None)
 
 def find_jobs():
+    global familiar_skill
+
     # visiting "timesjobs.com" and getting html src code
     html_text = requests.get(
-        "https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=").text
+        f"https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords={familiar_skill}&txtLocation=").text
 
     # parsing html src code
     soup = BeautifulSoup(markup=html_text, features='lxml')
@@ -32,7 +34,6 @@ def find_jobs():
                 }
 
     i = 0  # counter to keep record of jobs in a single file
-    global familiar_skill
 
     print('Filtering out..............')
 
@@ -41,7 +42,8 @@ def find_jobs():
 
         # looking for the jobs which are posted recently
         if 'few' in posted_date:
-            skills = job.find('span', class_='srp-skills').text.replace(' ', '').strip().split(',')
+            skills = job.find('span', class_='srp-skills').text.strip().split(',')
+            skills = list(map(lambda skill: skill.strip().lower(), skills))
 
             if familiar_skill in skills:
                 i += 1
