@@ -16,3 +16,8 @@
 4. Give input your skill, so as to look for jobs
 5. In every 10 mins, it will save .csv file in JobBot/jobs directory.\
 (eg: pythonjob1.csv, javajob1.csv, javajob2.csv....)
+
+
+### Output:
+![image](https://user-images.githubusercontent.com/85562020/157750097-58026cce-a9cd-466f-bda9-493a299a0829.png)
+![image](https://user-images.githubusercontent.com/85562020/157750436-622173c8-2c6f-49f5-9063-d8a30c6cde7f.png)
